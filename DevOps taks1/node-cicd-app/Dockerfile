@@ -1,12 +1,18 @@
-FROM node:18-alpine3.19
+# Use Node.js LTS version
+FROM node:18
 
+# Set working directory
 WORKDIR /app
 
+# Copy package.json and install dependencies
 COPY package*.json ./
-RUN npm install && npm audit fix --force
+RUN npm install
 
+# Copy app source code
 COPY . .
 
+# Expose port (adjust to your app)
 EXPOSE 3000
 
-CMD ["npm", "start"]
+# Start the app
+CMD ["node", "index.js"]
