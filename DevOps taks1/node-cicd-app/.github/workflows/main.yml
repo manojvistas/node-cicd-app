@@ -31,7 +31,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image
-        run: docker build -t manoj427/node-cicd-app .
+        run: docker build -t manoj427/node-cicd-app 
 
       - name: Push Docker image
         run: docker push manoj427/node-cicd-app
