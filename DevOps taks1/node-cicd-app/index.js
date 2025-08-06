@@ -1,13 +1,15 @@
-FROM node:18
+// index.js
 
-WORKDIR /app
+const express = require('express');
+const app = express();
+const PORT = 3000;
 
-COPY package*.json ./
-RUN npm install
+// Root route
+app.get('/', (req, res) => {
+  res.send('🚀 Hello from the Node.js CI/CD App!');
+});
 
-COPY . .
-
-EXPOSE 3000
-
-CMD ["node", "index.js"]
-
+// Start server
+app.listen(PORT, () => {
+  console.log(`✅ Server is running at http://localhost:${PORT}`);
+});
