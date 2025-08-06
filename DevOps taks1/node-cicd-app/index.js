@@ -1,10 +1,13 @@
-const http = require('http');
-const port = 3000;
+FROM node:18
 
-const server = http.createServer((req, res) => {
-  res.end('Hello from CI/CD pipeline!');
-});
+WORKDIR /app
 
-server.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["node", "index.js"]
+
